@@ -1,0 +1,30 @@
+Разные заметки по верстке
+======================
+1) контентную модель лучше назначить html-элементу, а остальным -- отнаследовать от него.
+html {
+    box-sizing: border-box;
+}
+
+* {
+    box-sizing: inherit;
+}
+
+Нахера? 
+В тех случаях, когда придется переназначить блочку И ВСЕМ ДОЧЕРНИМ БЛОЧКАМ контенную модель, достаточно будет использовать всего одно правило, а не 100.
+В остальных случаях отдельной разницы нет.
+
+2) Шрифты
+Подключать только woff, woff2, ttf (для старых Android).
+А вот так не надо:
+@font-face { 
+  font-family: 'Web font'; 
+  src: url('webfont.eot');                                    /* IE9 Compat Modes */ 
+  src: url('webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
+       url('webfont.woff2') format('woff2'),                  /* Новейшие браузеры */ 
+       url('webfont.woff') format('woff'),                    /* Новые браузеры и IE9+ */ 
+       url('webfont.ttf')  format('truetype'),                /* Старые Safari, Android, iOS */ 
+       url('webfont.svg#svgFontName') format('svg');          /* Древние Safari, iOS, Android */ 
+  font-weight: normal; 
+  font-style: normal; 
+}
+
